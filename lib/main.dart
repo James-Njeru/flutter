@@ -1,27 +1,14 @@
-
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(MyWidgets());
-}
+import './person.dart';
 
-class MyWidgets extends StatelessWidget{
+void main() => runApp(const FlutterApp());
+
+class FlutterApp extends StatelessWidget{
+  const FlutterApp({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome'),
-        ),
-        body: Container(
-          child: Text('Hi Flutter'),
-        ),
-      ),
-    );
+  Widget build(BuildContext context){
+    return Person(firstName: 'Jude', lastName: 'Wake');
   }
-
 }
