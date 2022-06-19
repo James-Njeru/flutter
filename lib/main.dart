@@ -21,59 +21,16 @@ class _FlutterAppState extends State<FlutterApp>{
         appBar: AppBar(
           title: const Text('Hello!'),
         ),
-        body: Form(
-          key: _key,
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'Enter name',
-                  icon: Icon(Icons.person),
-                ),
-                validator: (value){
-                  if(value!.isEmpty){
-                    return 'enter name';
-                  }
-                },
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
-                  hintText: 'Enter phone number',
-                  icon: Icon(Icons.phone),
-                ),
-                validator: (value){
-                  if(value!.isEmpty){
-                    return 'enter phone number';
-                  }
-                },
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'DOB',
-                  hintText: 'Date of birth',
-                  icon: Icon(Icons.calendar_today),
-                ),
-                validator: (value){
-                  if(value!.isEmpty){
-                    return 'enter DOB';
-                  }
-                },
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: RaisedButton(
-                  child: Text('Submit'),
-                  onPressed: (){
-                    if(_key.currentState!.validate()){
-                      Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Data is processing')));
-                    }
-                  },
-                ),
-              ),
-            ],
+        body: RichText(
+          text: const TextSpan(
+            text: 'Don\'t have an account?',
+            style: TextStyle(color: Colors.black, fontSize: 20),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Sign up',
+                style: TextStyle(color: Colors.blueAccent, fontSize: 20)
+              )
+            ]
           ),
         ),
       ),
