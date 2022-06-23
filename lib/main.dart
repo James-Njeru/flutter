@@ -12,25 +12,35 @@ class FlutterApp extends StatefulWidget{
 }
 
 class _FlutterAppState extends State<FlutterApp>{
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  String dropdownvalue = 'item 1';
+
+  var items = [
+    'item 1', 'item 2', 'item 3', 'item 4', 'item 5',
+  ];
 
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Hello!'),
         ),
-        body: RichText(
-          text: const TextSpan(
-            text: 'Don\'t have an account?',
-            style: TextStyle(color: Colors.black, fontSize: 20),
-            children: <TextSpan>[
-              TextSpan(
-                text: 'Sign up',
-                style: TextStyle(color: Colors.blueAccent, fontSize: 20)
-              )
-            ]
+        body: Center(
+          child: DropdownButton(
+            value: dropdownvalue,
+            icon: const Icon(Icons.keyboard_arrow_down),
+            items: items.map((String items){
+              return DropdownMenuItem(
+                value: items,
+                child: Text(items),
+              );
+            }).toList(),
+            onChanged: (String? newValue){
+              setState((){
+                dropdownvalue = newValue!;
+              });
+            },
           ),
         ),
       ),
