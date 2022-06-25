@@ -21,36 +21,37 @@ class _FlutterAppState extends State<FlutterApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Hello!'),
-          actions: <Widget>[
-            PopupMenuButton<Menu>(
-              onSelected: (Menu item) {
-                setState(() {
-                  _selectedMenu = item.name;
-                });
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
-                const PopupMenuItem(
-                  child: Text('Item 1'),
-                  value: Menu.itemOne,
+        ),
+        body: Center(
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            color: Colors.red,
+            elevation: 10,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.album, size: 60,),
+                  title: Text('Sonu Nigam', style: TextStyle(fontSize: 30.0),),
+                  subtitle: Text('Best of Sonu', style: TextStyle(fontSize: 18.0),),
                 ),
-                const PopupMenuItem(
-                  child: Text('Text 2'),
-                  value: Menu.itemTwo,
-                ),
-                const PopupMenuItem(
-                  child: Text('Text 3'),
-                  value: Menu.itemThree,
-                ),
-                const PopupMenuItem(
-                  child: Text('Text 4'),
-                  value: Menu.itemFour,
+                ButtonBar(
+                  children: <Widget>[
+                    RaisedButton(
+                      child: const Text('Play'),
+                      onPressed: (){},
+                    ),
+                    RaisedButton(
+                      child: const Text('Pause'),
+                      onPressed: (){},
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-        body: Center(
-          child: Text('_selectedMenu: $_selectedMenu'),
+          ),
         ),
       ),
     );
